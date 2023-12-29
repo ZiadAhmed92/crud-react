@@ -23,7 +23,7 @@ function App() {
   //get AllData
   async function getALlProduces() {
     try {
-      const { data } = await axios.get("http://localhost:3000/products")
+      const { data } = await axios.get("https://crud99-z2cf.onrender.com/products")
 
       setData(data.data)
     } catch (err) {
@@ -34,7 +34,7 @@ function App() {
   //  Send Data
   async function sendProduces() {
     try {
-      const { data } = await axios.post("http://localhost:3000/products", produces)
+      const { data } = await axios.post("https://crud99-z2cf.onrender.com/products", produces)
 
     } catch (err) {
       console.log(err)
@@ -56,7 +56,7 @@ function App() {
   async function deleteProduces(_id) {
 
     try {
-      const { data } = await axios.delete(`http://localhost:3000/products/${_id}`)
+      const { data } = await axios.delete(`https://crud99-z2cf.onrender.com/products/${_id}`)
     } catch (err) {
       console.log(err)
     }
@@ -65,7 +65,7 @@ function App() {
   async function updateProduces(_id, update) {
 
     try {
-      const { data } = await axios.put(`http://localhost:3000/products`, { ...update, _id })
+      const { data } = await axios.put(`https://crud99-z2cf.onrender.com/products`, { ...update, _id })
     } catch (err) {
       console.log(err)
     }
