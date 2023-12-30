@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 const HomePage = () => {
-
+let nav = useNavigate()
   const [data, setData] = useState([])
   const [id, setID] = useState("658dfe1c1cc179965d8d1339")
   const [btn, setBtn] = useState("Add Produce")
@@ -94,7 +95,7 @@ const HomePage = () => {
   return (
     <div className='parent'>
 
-      <div className=' icon-exist'>  <i className="fa-solid fa-right-to-bracket"></i></div>
+      <div className=' icon-exist' onClick={()=> nav("/login")}>  <i className="fa-solid fa-right-to-bracket"></i></div>
       <div className='text-crud'>CRUD Operations With Node.js API</div>
       <div className='produce-main w-75 m-auto'>
         <form onSubmit={sendData}>
