@@ -1,0 +1,21 @@
+.text-Rgister{
+    color: rgba(255, 255, 255, 0.6);
+}
+.text-blue{
+    color: rgba(0, 255, 30, 0.742);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 970px) {
+  .from-Register{
+    width: 90% !important;
+    margin: auto;
+  }
+  .from-Register input{
+    width: 95% !important;
+    /* margin: auto; */
+  }
+  .alert-danger{
+    width: 95% !important;
+  }
+  }

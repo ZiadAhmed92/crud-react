@@ -120,6 +120,15 @@ display: none;
             color: rgb(0, 255, 242);
            
         }
+        .text-crud{
+           
+            margin: 10px 0;
+            font-size: 1em;
+        
+         }
+         .parent{
+            margin-top: 50px;
+         }
    
   }
 
@@ -147,3 +156,21 @@ display: none;
    html {scrollbar-color: #9e4673 #3d4a59;} 
 
    html {scroll-behavior: smooth;}
+
+   .icon-exist{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    cursor: pointer;
+    border: 1px solid;
+    padding: 2px 10px;
+}
+   .icon-exist:hover{
+   color: red;
+   }
