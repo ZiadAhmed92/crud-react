@@ -3,8 +3,12 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 const HomePage = () => {
-let nav = useNavigate()
+  let nav = useNavigate()
+
+
   const [data, setData] = useState([])
+  const [arr, setArr] = useState([])
+
   const [id, setID] = useState("658dfe1c1cc179965d8d1339")
   const [btn, setBtn] = useState("Add Produce")
 
@@ -25,8 +29,8 @@ let nav = useNavigate()
   async function getALlProduces() {
     try {
       const { data } = await axios.get("https://crud99-z2cf.onrender.com/products")
-
       setData(data.data)
+      setArr(data.data)
     } catch (err) {
       console.log(err)
     }
@@ -90,35 +94,65 @@ let nav = useNavigate()
     setBtn("Add Produce")
     getALlProduces()
   }
+  function searchProduct(e) {
 
+    setArr(data.filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase())))
+  }
 
   return (
     <div className='parent'>
 
-      <div className=' icon-exist' onClick={()=> nav("/login")}>  <i className="fa-solid fa-right-to-bracket"></i></div>
+      <div className=' icon-exist' onClick={() => nav("/login")}>  <i className="fa-solid fa-right-to-bracket"></i></div>
       <div className='text-crud'>CRUD Operations With Node.js API</div>
       <div className='produce-main w-75 m-auto'>
+
+
         <form onSubmit={sendData}>
 
           <div className="form-group">
             <label htmlFor="productName">Name</label>
-            <input type="text" className="form-control" name="name" onChange={getProduceData} value={produces.name} required />
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              onChange={getProduceData}
+              value={produces.name}
+              required />
           </div>
 
           <div className="form-group">
             <label htmlFor="productName">Price</label>
-            <input type="number" className="form-control" name="price" onChange={getProduceData} value={produces.price} required />
+            <input
+              type="number"
+              className="form-control"
+              name="price"
+              onChange={getProduceData}
+              value={produces.price}
+              required />
           </div>
 
           <div className="form-group">
             <label htmlFor="productDesc">Description</label>
-            <textarea id="productDesc" className="form-control" name="desc" onChange={getProduceData} value={produces.desc} required rows="5" cols="50" >
+            <textarea
+              id="productDesc"
+              className="form-control"
+              name="desc"
+              onChange={getProduceData}
+              value={produces.desc}
+              required
+              rows="5"
+              cols="50" >
             </textarea>
           </div>
 
           <button className="btn btn-outline-info my-3 text-capitalize"> {btn}</button>
         </form>
+
       </div>
+      <input type='search' placeholder='Search ...'
+        className='form-control w-75 m-auto my-2'
+        onChange={searchProduct}
+      />
 
       <div className='w-75 m-auto main-table'>
         <table className="table my-3 text-center">
@@ -135,7 +169,7 @@ let nav = useNavigate()
           </thead>
           <tbody id="tbody">
             {
-              data.map(({ _id, name, price, discription }, i) =>
+              arr.map(({ _id, name, price, discription }, i) =>
                 <tr key={i}>
                   <td className="text-capitalize">{i}</td>
                   <td className="text-capitalize">{name}</td>
@@ -164,9 +198,14 @@ let nav = useNavigate()
                       getALlProduces()
                     }}></i>
 
-                    <button className=" btn btn-danger text-capitalize btn-lsrg" onClick={() => { setID(_id) }}>delete</button>
+                    <button
+                      className=" btn btn-danger text-capitalize btn-lsrg"
+                      onClick={() => { setID(_id), getALlProduces() }}
+                    >
+                      delete
+                    </button>
 
-                    <i className=" fa-solid fa-trash mobile d-none" onClick={() => { setID(_id) }}></i></td>
+                    <i className=" fa-solid fa-trash mobile d-none" onClick={() => { setID(_id), getALlProduces() }}></i></td>
 
                 </tr>)
             }

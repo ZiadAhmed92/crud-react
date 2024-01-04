@@ -10,14 +10,12 @@ import ProtectedRouter from "./ProtectedRouter/ProtectedRouter.jsx"
 function App() {
   
   let router = createBrowserRouter([
-    {path:"/" , element:<Layout/>,children:[
+      {path:"/" , element:<Layout/>,children:[
       {index:true , element:<Login/>},
       {path:"login", element:<Login/>},
       {path:"home" , element:<ProtectedRouter><HomePage/></ProtectedRouter>},
       {path:"register" , element:<Register/>},
       {path:"*" , element:<Notfound/>},
-      
-    
     ]}
   ])
   
